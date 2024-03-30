@@ -11305,7 +11305,7 @@ const logo = "/assets/logo-CRanshjO.webp"
                                 className: "img-fluid footerLogo",
                                 src: logo,
                                 alt: "logo",
-                                title: "cloud BTC"
+                                title: "Baby Halving"
                             })
                         }), jsxRuntimeExports.jsxs("p", {
                             className: "footerContactPara",
@@ -51024,7 +51024,7 @@ const openNav = ()=>{
                             children: jsxRuntimeExports.jsx("img", {
                                 src: logo,
                                 alt: "logo",
-                                title: "cloud BTC"
+                                title: "Baby Halving"
                             })
                         }), jsxRuntimeExports.jsxs("ul", {
                             id: "navigationSideBar",
@@ -77545,7 +77545,7 @@ const Banner = ()=>{
                                 children: [jsxRuntimeExports.jsxs("h1", {
                                     className: "bannerHeading",
                                     children: ["Welcome to Digitally Mineable Bitcoin", jsxRuntimeExports.jsx("span", {
-                                        children: " Cloud BTC"
+                                        children: " Baby Halving"
                                     })]
                                 }), jsxRuntimeExports.jsx("p", {
                                     className: "bannerPara",
@@ -77554,7 +77554,7 @@ const Banner = ()=>{
                                     className: "bannerSmartContract",
                                     children: [jsxRuntimeExports.jsx("span", {
                                         children: "Smart Contract Address: "
-                                    }), "0xcAE6EBAceF456e5A942afb40Fc99F2F38639eF01", jsxRuntimeExports.jsx("span", {
+                                    }), "0x9d8a797b4f7df73e2e93124e9d9061e7f550e60a", jsxRuntimeExports.jsx("span", {
                                         className: "bannerSmartContractSpan",
                                         children: "Don't send anything to this address."
                                     })]
@@ -77565,7 +77565,7 @@ const Banner = ()=>{
                                         className: "btn bannerBtn",
                                         children: "WhitePaper"
                                     }), jsxRuntimeExports.jsx(Link, {
-                                        to: "/",
+                                        to: "https://babyhalving.vercel.app/wp-content/uploads/2023/06/WhitePaper-BabyHalving.pdf",
                                         onClick: ht=>{
                                             dt(ht)
                                         }
