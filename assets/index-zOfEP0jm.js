@@ -18991,7 +18991,7 @@ function hydrate(_e, et) {
     }
 }
 const bsc = defineChain({
-    id: 56,
+    id: 97,
     name: "BNB Smart Chain",
     nativeCurrency: {
         decimals: 18,
@@ -19000,7 +19000,7 @@ const bsc = defineChain({
     },
     rpcUrls: {
         default: {
-            http: ["https://rpc.ankr.com/bsc"]
+            http: ["https://chain-proxy.wallet.coinbase.com?targetName=bsc-testnet"]
         }
     },
     blockExplorers: {
@@ -19018,23 +19018,23 @@ const bsc = defineChain({
     }
 })
   , mainnet = defineChain({
-    id: 1,
-    name: "Ethereum",
+    id: 97,
+    name: "BNB Smart Chain",
     nativeCurrency: {
-        name: "Ether",
-        symbol: "ETH",
+        name: "BNB",
+        symbol: "BNB",
         decimals: 18
     },
     rpcUrls: {
         default: {
-            http: ["https://cloudflare-eth.com"]
+            http: ["https://chain-proxy.wallet.coinbase.com?targetName=bsc-testnet"]
         }
     },
     blockExplorers: {
         default: {
-            name: "Etherscan",
-            url: "https://etherscan.io",
-            apiUrl: "https://api.etherscan.io/api"
+            name: "BscScan",
+            url: "https://bscscan.com",
+            apiUrl: "https://api.bscscan.com/api"
         }
     },
     contracts: {
@@ -74301,584 +74301,568 @@ const checkmark = getDefaultExportFromCjs(checkmark$1)
     }
     ]
 }
-  , abi2_Presale_ETH = [{
-    inputs: [{
-        internalType: "address",
-        name: "_presaleTokenAddress",
-        type: "address"
-    }, {
-        internalType: "address",
-        name: "_usdtTokenAddress",
-        type: "address"
-    }, {
-        internalType: "address",
-        name: "_ethPriceFeedAddress",
-        type: "address"
-    }],
-    stateMutability: "nonpayable",
-    type: "constructor"
-}, {
-    inputs: [{
-        internalType: "address",
-        name: "owner",
-        type: "address"
-    }],
-    name: "OwnableInvalidOwner",
-    type: "error"
-}, {
-    inputs: [{
-        internalType: "address",
-        name: "account",
-        type: "address"
-    }],
-    name: "OwnableUnauthorizedAccount",
-    type: "error"
-}, {
-    anonymous: !1,
-    inputs: [{
-        indexed: !0,
-        internalType: "address",
-        name: "previousOwner",
-        type: "address"
-    }, {
-        indexed: !0,
-        internalType: "address",
-        name: "newOwner",
-        type: "address"
-    }],
-    name: "OwnershipTransferred",
-    type: "event"
-}, {
-    anonymous: !1,
-    inputs: [{
-        indexed: !1,
-        internalType: "address",
-        name: "account",
-        type: "address"
-    }],
-    name: "Paused",
-    type: "event"
-}, {
-    anonymous: !1,
-    inputs: [{
-        indexed: !1,
-        internalType: "enum CloudBTCPresale.PresaleStage",
-        name: "newStage",
-        type: "uint8"
-    }],
-    name: "PresaleAdvanced",
-    type: "event"
-}, {
-    anonymous: !1,
-    inputs: [],
-    name: "PresaleEnded",
-    type: "event"
-}, {
-    anonymous: !1,
-    inputs: [{
-        indexed: !1,
-        internalType: "enum CloudBTCPresale.PresaleStage",
-        name: "newStage",
-        type: "uint8"
-    }],
-    name: "StageChanged",
-    type: "event"
-}, {
-    anonymous: !1,
-    inputs: [{
-        indexed: !1,
-        internalType: "address",
-        name: "buyer",
-        type: "address"
-    }, {
-        indexed: !1,
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256"
-    }, {
-        indexed: !1,
-        internalType: "uint256",
-        name: "value",
-        type: "uint256"
-    }, {
-        indexed: !1,
-        internalType: "string",
-        name: "currency",
-        type: "string"
-    }],
-    name: "TokensPurchased",
-    type: "event"
-}, {
-    anonymous: !1,
-    inputs: [{
-        indexed: !1,
-        internalType: "address",
-        name: "account",
-        type: "address"
-    }],
-    name: "Unpaused",
-    type: "event"
-}, {
-    inputs: [],
-    name: "baseDecimals",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "address",
-        name: "referral",
-        type: "address"
-    }],
-    name: "buyWithETH",
-    outputs: [],
-    stateMutability: "payable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "uint256",
-        name: "usdtAmount",
-        type: "uint256"
-    }, {
-        internalType: "address",
-        name: "referral",
-        type: "address"
-    }],
-    name: "buyWithUSDT",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [],
-    name: "currentStage",
-    outputs: [{
-        internalType: "enum CloudBTCPresale.PresaleStage",
-        name: "",
-        type: "uint8"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "address[]",
-        name: "userAddresses",
-        type: "address[]"
-    }, {
-        internalType: "uint256[]",
-        name: "tokenAmounts",
-        type: "uint256[]"
-    }],
-    name: "distributeTokens",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [],
-    name: "ethPriceFeed",
-    outputs: [{
-        internalType: "contract AggregatorV3Interface",
-        name: "",
-        type: "address"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "getLatestETHPrice",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "maxLimitETH",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "maxLimitUSD",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "minLimitETH",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "minLimitUSD",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "owner",
-    outputs: [{
-        internalType: "address",
-        name: "",
-        type: "address"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "pausePresale",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [],
-    name: "paused",
-    outputs: [{
-        internalType: "bool",
-        name: "",
-        type: "bool"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "presaleToken",
-    outputs: [{
-        internalType: "contract IERC20",
-        name: "",
-        type: "address"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "referralPercentage",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "address",
-        name: "",
-        type: "address"
-    }],
-    name: "referralRewardsETH",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "address",
-        name: "",
-        type: "address"
-    }],
-    name: "referralRewardsUSDT",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "renounceOwnership",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "address payable[3]",
-        name: "_ethReceivers",
-        type: "address[3]"
-    }],
-    name: "setEthReceivers",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "uint256",
-        name: "_maxLimitETH",
-        type: "uint256"
-    }],
-    name: "setMaxLimitETH",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "uint256",
-        name: "_maxLimitUSD",
-        type: "uint256"
-    }],
-    name: "setMaxLimitUSD",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "uint256",
-        name: "_minLimitETH",
-        type: "uint256"
-    }],
-    name: "setMinLimitETH",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "uint256",
-        name: "_minLimitUSD",
-        type: "uint256"
-    }],
-    name: "setMinLimitUSD",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "enum CloudBTCPresale.PresaleStage",
-        name: "stage",
-        type: "uint8"
-    }],
-    name: "setPresaleStage",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "uint256",
-        name: "_referralPercentage",
-        type: "uint256"
-    }],
-    name: "setReferralPercentage",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "enum CloudBTCPresale.PresaleStage",
-        name: "stage",
-        type: "uint8"
-    }, {
-        internalType: "uint256",
-        name: "price",
-        type: "uint256"
-    }],
-    name: "setStagePrice",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "enum CloudBTCPresale.PresaleStage",
-        name: "stage",
-        type: "uint8"
-    }, {
-        internalType: "uint256",
-        name: "supply",
-        type: "uint256"
-    }],
-    name: "setStageTokenSupply",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "address[3]",
-        name: "_usdtReceivers",
-        type: "address[3]"
-    }],
-    name: "setUsdtReceivers",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "enum CloudBTCPresale.PresaleStage",
-        name: "",
-        type: "uint8"
-    }],
-    name: "stagePrices",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "enum CloudBTCPresale.PresaleStage",
-        name: "",
-        type: "uint8"
-    }],
-    name: "stageTokenSupplies",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "enum CloudBTCPresale.PresaleStage",
-        name: "",
-        type: "uint8"
-    }],
-    name: "tokensSold",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "totalETHRaised",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "address",
-        name: "",
-        type: "address"
-    }],
-    name: "totalReferrals",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "totalTokensSold",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "totalUSDRaised",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "address",
-        name: "newOwner",
-        type: "address"
-    }],
-    name: "transferOwnership",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [],
-    name: "unpausePresale",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "address",
-        name: "_newEthPriceFeedAddress",
-        type: "address"
-    }],
-    name: "updateEthPriceFeedAddress",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "uint256",
-        name: "val",
-        type: "uint256"
-    }],
-    name: "updateReferralPercentage",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "address",
-        name: "_newUsdtTokenAddress",
-        type: "address"
-    }],
-    name: "updateUsdtTokenAddress",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [],
-    name: "usdtToken",
-    outputs: [{
-        internalType: "contract IERC20Extended",
-        name: "",
-        type: "address"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "withdrawETH",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [],
-    name: "withdrawUSDT",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}]
+  , abi2_Presale_ETH = [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_presaleTokenAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_usdtTokenAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_ethPriceFeedAddress",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        { "internalType": "address", "name": "owner", "type": "address" }
+      ],
+      "name": "OwnableInvalidOwner",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        { "internalType": "address", "name": "account", "type": "address" }
+      ],
+      "name": "OwnableUnauthorizedAccount",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "Paused",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "enum BabyHalvingPresale.PresaleStage",
+          "name": "newStage",
+          "type": "uint8"
+        }
+      ],
+      "name": "PresaleAdvanced",
+      "type": "event"
+    },
+    { "anonymous": false, "inputs": [], "name": "PresaleEnded", "type": "event" },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "enum BabyHalvingPresale.PresaleStage",
+          "name": "newStage",
+          "type": "uint8"
+        }
+      ],
+      "name": "StageChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "buyer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "currency",
+          "type": "string"
+        }
+      ],
+      "name": "TokensPurchased",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "Unpaused",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "baseDecimals",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "address", "name": "referral", "type": "address" }
+      ],
+      "name": "buyWithETH",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "usdtAmount", "type": "uint256" },
+        { "internalType": "address", "name": "referral", "type": "address" }
+      ],
+      "name": "buyWithUSDT",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "currentStage",
+      "outputs": [
+        {
+          "internalType": "enum BabyHalvingPresale.PresaleStage",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address[]",
+          "name": "userAddresses",
+          "type": "address[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "tokenAmounts",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "distributeTokens",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "ethPriceFeed",
+      "outputs": [
+        {
+          "internalType": "contract AggregatorV3Interface",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getLatestETHPrice",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "maxLimitETH",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "maxLimitUSD",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "minLimitETH",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "minLimitUSD",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "pausePresale",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "paused",
+      "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "presaleToken",
+      "outputs": [
+        { "internalType": "contract IERC20", "name": "", "type": "address" }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "referralPercentage",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
+      "name": "referralRewardsETH",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
+      "name": "referralRewardsUSDT",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address payable[3]",
+          "name": "_ethReceivers",
+          "type": "address[3]"
+        }
+      ],
+      "name": "setEthReceivers",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "_maxLimitETH", "type": "uint256" }
+      ],
+      "name": "setMaxLimitETH",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "_maxLimitUSD", "type": "uint256" }
+      ],
+      "name": "setMaxLimitUSD",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "_minLimitETH", "type": "uint256" }
+      ],
+      "name": "setMinLimitETH",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "_minLimitUSD", "type": "uint256" }
+      ],
+      "name": "setMinLimitUSD",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "enum BabyHalvingPresale.PresaleStage",
+          "name": "stage",
+          "type": "uint8"
+        }
+      ],
+      "name": "setPresaleStage",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_referralPercentage",
+          "type": "uint256"
+        }
+      ],
+      "name": "setReferralPercentage",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "enum BabyHalvingPresale.PresaleStage",
+          "name": "stage",
+          "type": "uint8"
+        },
+        { "internalType": "uint256", "name": "price", "type": "uint256" }
+      ],
+      "name": "setStagePrice",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "enum BabyHalvingPresale.PresaleStage",
+          "name": "stage",
+          "type": "uint8"
+        },
+        { "internalType": "uint256", "name": "supply", "type": "uint256" }
+      ],
+      "name": "setStageTokenSupply",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address[3]",
+          "name": "_usdtReceivers",
+          "type": "address[3]"
+        }
+      ],
+      "name": "setUsdtReceivers",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "enum BabyHalvingPresale.PresaleStage",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "name": "stagePrices",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "enum BabyHalvingPresale.PresaleStage",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "name": "stageTokenSupplies",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "enum BabyHalvingPresale.PresaleStage",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "name": "tokensSold",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalETHRaised",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
+      "name": "totalReferrals",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalTokensSold",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalUSDRaised",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "address", "name": "newOwner", "type": "address" }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "unpausePresale",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newEthPriceFeedAddress",
+          "type": "address"
+        }
+      ],
+      "name": "updateEthPriceFeedAddress",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "uint256", "name": "val", "type": "uint256" }],
+      "name": "updateReferralPercentage",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newUsdtTokenAddress",
+          "type": "address"
+        }
+      ],
+      "name": "updateUsdtTokenAddress",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "usdtToken",
+      "outputs": [
+        {
+          "internalType": "contract IERC20Extended",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "withdrawETH",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "withdrawUSDT",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ]  
   , PresaleEthForm = ()=>{
     const [_e,et] = reactExports.useState("")
       , [tt,rt] = reactExports.useState(window.innerWidth)
@@ -74921,11 +74905,11 @@ const checkmark = getDefaultExportFromCjs(checkmark$1)
             return
         }
         if (Number(_e ?? 0) < .001 || Number(_e ?? 0) > 10) {
-            toastFun("error", "Min: 0.001 & Max: 10");
+            toastFun("error", "Min: 0.05 & Max: 80");
             return
         }
         wt({
-            address: "0xe9D4E5FBf197cD1372902293a21d235Fb8B30D97",
+            address: "0xdbEA50B8536532BFAC245c89A2D574F333119Eb6",
             abi: abi2_Presale_ETH,
             functionName: "buyWithETH",
             args: [ft],
@@ -75099,519 +75083,569 @@ const checkmark = getDefaultExportFromCjs(checkmark$1)
 }
 ;
 ReactModal.setAppElement("#root");
-const abi_Presale_BNB$1 = [{
-    inputs: [{
-        internalType: "address",
-        name: "_usdtTokenAddress",
-        type: "address"
-    }, {
-        internalType: "address",
-        name: "_ethPriceFeedAddress",
-        type: "address"
-    }],
-    stateMutability: "nonpayable",
-    type: "constructor"
-}, {
-    inputs: [{
-        internalType: "address",
-        name: "owner",
-        type: "address"
-    }],
-    name: "OwnableInvalidOwner",
-    type: "error"
-}, {
-    inputs: [{
-        internalType: "address",
-        name: "account",
-        type: "address"
-    }],
-    name: "OwnableUnauthorizedAccount",
-    type: "error"
-}, {
-    anonymous: !1,
-    inputs: [{
-        indexed: !0,
-        internalType: "address",
-        name: "previousOwner",
-        type: "address"
-    }, {
-        indexed: !0,
-        internalType: "address",
-        name: "newOwner",
-        type: "address"
-    }],
-    name: "OwnershipTransferred",
-    type: "event"
-}, {
-    anonymous: !1,
-    inputs: [{
-        indexed: !0,
-        internalType: "address",
-        name: "purchaser",
-        type: "address"
-    }, {
-        indexed: !1,
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256"
-    }, {
-        indexed: !1,
-        internalType: "bool",
-        name: "isUSDT",
-        type: "bool"
-    }, {
-        indexed: !1,
-        internalType: "enum CrossChainPresale.PresaleStage",
-        name: "stage",
-        type: "uint8"
-    }],
-    name: "PurchaseRecorded",
-    type: "event"
-}, {
-    anonymous: !1,
-    inputs: [{
-        indexed: !1,
-        internalType: "enum CrossChainPresale.PresaleStage",
-        name: "newStage",
-        type: "uint8"
-    }],
-    name: "StageAdvanced",
-    type: "event"
-}, {
-    anonymous: !1,
-    inputs: [{
-        indexed: !0,
-        internalType: "uint256",
-        name: "purchaseIndex",
-        type: "uint256"
-    }],
-    name: "TokensDistributed",
-    type: "event"
-}, {
-    inputs: [],
-    name: "advanceStageManually",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [],
-    name: "baseDecimals",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "address",
-        name: "referral",
-        type: "address"
-    }],
-    name: "buyWithNativeToken",
-    outputs: [],
-    stateMutability: "payable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "uint256",
-        name: "usdtAmount",
-        type: "uint256"
-    }, {
-        internalType: "address",
-        name: "referral",
-        type: "address"
-    }],
-    name: "buyWithUSDT",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [],
-    name: "currentStage",
-    outputs: [{
-        internalType: "enum CrossChainPresale.PresaleStage",
-        name: "",
-        type: "uint8"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "uint256",
-        name: "purchaseIndex",
-        type: "uint256"
-    }],
-    name: "distributeTokens",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [],
-    name: "ethPriceFeed",
-    outputs: [{
-        internalType: "contract AggregatorV3Interface",
-        name: "",
-        type: "address"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "getLatestETHPrice",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "getPurchasesCount",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "listCompletedDistributions",
-    outputs: [{
-        components: [{
-            internalType: "address",
-            name: "purchaser",
-            type: "address"
-        }, {
-            internalType: "uint256",
-            name: "amount",
-            type: "uint256"
-        }, {
-            internalType: "bool",
-            name: "tokensDistributed",
-            type: "bool"
-        }, {
-            internalType: "enum CrossChainPresale.PresaleStage",
-            name: "stage",
-            type: "uint8"
-        }],
-        internalType: "struct CrossChainPresale.Purchase[]",
-        name: "",
-        type: "tuple[]"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "listPendingDistributions",
-    outputs: [{
-        components: [{
-            internalType: "address",
-            name: "purchaser",
-            type: "address"
-        }, {
-            internalType: "uint256",
-            name: "amount",
-            type: "uint256"
-        }, {
-            internalType: "bool",
-            name: "tokensDistributed",
-            type: "bool"
-        }, {
-            internalType: "enum CrossChainPresale.PresaleStage",
-            name: "stage",
-            type: "uint8"
-        }],
-        internalType: "struct CrossChainPresale.Purchase[]",
-        name: "",
-        type: "tuple[]"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "maxLimitETH",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "maxLimitUSD",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "minLimitETH",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "minLimitUSD",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "owner",
-    outputs: [{
-        internalType: "address",
-        name: "",
-        type: "address"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    name: "purchases",
-    outputs: [{
-        internalType: "address",
-        name: "purchaser",
-        type: "address"
-    }, {
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256"
-    }, {
-        internalType: "bool",
-        name: "tokensDistributed",
-        type: "bool"
-    }, {
-        internalType: "enum CrossChainPresale.PresaleStage",
-        name: "stage",
-        type: "uint8"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "referralPercentage",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "address",
-        name: "",
-        type: "address"
-    }],
-    name: "referralRewardsETH",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "address",
-        name: "",
-        type: "address"
-    }],
-    name: "referralRewardsUSDT",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "renounceOwnership",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "uint256",
-        name: "_baseDecimals",
-        type: "uint256"
-    }],
-    name: "setBaseDecimals",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "address payable[3]",
-        name: "_ethReceivers",
-        type: "address[3]"
-    }],
-    name: "setEthReceivers",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "uint256",
-        name: "_maxLimitETH",
-        type: "uint256"
-    }],
-    name: "setMaxLimitETH",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "uint256",
-        name: "_maxLimitUSD",
-        type: "uint256"
-    }],
-    name: "setMaxLimitUSD",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "uint256",
-        name: "_minLimitETH",
-        type: "uint256"
-    }],
-    name: "setMinLimitETH",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "uint256",
-        name: "_minLimitUSD",
-        type: "uint256"
-    }],
-    name: "setMinLimitUSD",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "uint256",
-        name: "_referralPercentage",
-        type: "uint256"
-    }],
-    name: "setReferralPercentage",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "address[3]",
-        name: "_usdtReceivers",
-        type: "address[3]"
-    }],
-    name: "setUsdtReceivers",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "enum CrossChainPresale.PresaleStage",
-        name: "",
-        type: "uint8"
-    }],
-    name: "stagePrices",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "address",
-        name: "",
-        type: "address"
-    }],
-    name: "totalReferrals",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "address",
-        name: "newOwner",
-        type: "address"
-    }],
-    name: "transferOwnership",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "address",
-        name: "_newEthPriceFeedAddress",
-        type: "address"
-    }],
-    name: "updateEthPriceFeedAddress",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "address",
-        name: "_newUsdtTokenAddress",
-        type: "address"
-    }],
-    name: "updateUsdtTokenAddress",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [],
-    name: "usdtToken",
-    outputs: [{
-        internalType: "contract IERC20",
-        name: "",
-        type: "address"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "withdrawETH",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [],
-    name: "withdrawUSDT",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}]
+const abi_Presale_BNB$1 = [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_presaleTokenAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_usdtTokenAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_ethPriceFeedAddress",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        { "internalType": "address", "name": "owner", "type": "address" }
+      ],
+      "name": "OwnableInvalidOwner",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        { "internalType": "address", "name": "account", "type": "address" }
+      ],
+      "name": "OwnableUnauthorizedAccount",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "Paused",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "enum BabyHalvingPresale.PresaleStage",
+          "name": "newStage",
+          "type": "uint8"
+        }
+      ],
+      "name": "PresaleAdvanced",
+      "type": "event"
+    },
+    { "anonymous": false, "inputs": [], "name": "PresaleEnded", "type": "event" },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "enum BabyHalvingPresale.PresaleStage",
+          "name": "newStage",
+          "type": "uint8"
+        }
+      ],
+      "name": "StageChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "buyer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "currency",
+          "type": "string"
+        }
+      ],
+      "name": "TokensPurchased",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "Unpaused",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "baseDecimals",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "address", "name": "referral", "type": "address" }
+      ],
+      "name": "buyWithETH",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "usdtAmount", "type": "uint256" },
+        { "internalType": "address", "name": "referral", "type": "address" }
+      ],
+      "name": "buyWithUSDT",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "currentStage",
+      "outputs": [
+        {
+          "internalType": "enum BabyHalvingPresale.PresaleStage",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address[]",
+          "name": "userAddresses",
+          "type": "address[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "tokenAmounts",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "distributeTokens",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "ethPriceFeed",
+      "outputs": [
+        {
+          "internalType": "contract AggregatorV3Interface",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getLatestETHPrice",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "maxLimitETH",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "maxLimitUSD",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "minLimitETH",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "minLimitUSD",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "pausePresale",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "paused",
+      "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "presaleToken",
+      "outputs": [
+        { "internalType": "contract IERC20", "name": "", "type": "address" }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "referralPercentage",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
+      "name": "referralRewardsETH",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
+      "name": "referralRewardsUSDT",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address payable[3]",
+          "name": "_ethReceivers",
+          "type": "address[3]"
+        }
+      ],
+      "name": "setEthReceivers",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "_maxLimitETH", "type": "uint256" }
+      ],
+      "name": "setMaxLimitETH",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "_maxLimitUSD", "type": "uint256" }
+      ],
+      "name": "setMaxLimitUSD",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "_minLimitETH", "type": "uint256" }
+      ],
+      "name": "setMinLimitETH",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "_minLimitUSD", "type": "uint256" }
+      ],
+      "name": "setMinLimitUSD",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "enum BabyHalvingPresale.PresaleStage",
+          "name": "stage",
+          "type": "uint8"
+        }
+      ],
+      "name": "setPresaleStage",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_referralPercentage",
+          "type": "uint256"
+        }
+      ],
+      "name": "setReferralPercentage",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "enum BabyHalvingPresale.PresaleStage",
+          "name": "stage",
+          "type": "uint8"
+        },
+        { "internalType": "uint256", "name": "price", "type": "uint256" }
+      ],
+      "name": "setStagePrice",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "enum BabyHalvingPresale.PresaleStage",
+          "name": "stage",
+          "type": "uint8"
+        },
+        { "internalType": "uint256", "name": "supply", "type": "uint256" }
+      ],
+      "name": "setStageTokenSupply",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address[3]",
+          "name": "_usdtReceivers",
+          "type": "address[3]"
+        }
+      ],
+      "name": "setUsdtReceivers",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "enum BabyHalvingPresale.PresaleStage",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "name": "stagePrices",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "enum BabyHalvingPresale.PresaleStage",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "name": "stageTokenSupplies",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "enum BabyHalvingPresale.PresaleStage",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "name": "tokensSold",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalETHRaised",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
+      "name": "totalReferrals",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalTokensSold",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalUSDRaised",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "address", "name": "newOwner", "type": "address" }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "unpausePresale",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newEthPriceFeedAddress",
+          "type": "address"
+        }
+      ],
+      "name": "updateEthPriceFeedAddress",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "uint256", "name": "val", "type": "uint256" }],
+      "name": "updateReferralPercentage",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newUsdtTokenAddress",
+          "type": "address"
+        }
+      ],
+      "name": "updateUsdtTokenAddress",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "usdtToken",
+      "outputs": [
+        {
+          "internalType": "contract IERC20Extended",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "withdrawETH",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "withdrawUSDT",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ]
+  
   , PresaleBnbForm = ()=>{
     var Bt;
     const [_e,et] = reactExports.useState("")
@@ -75692,7 +75726,7 @@ const abi_Presale_BNB$1 = [{
                 console.log(Yt, "error")
             }
             Lt({
-                address: "0xcAE6EBAceF456e5A942afb40Fc99F2F38639eF01",
+                address: "0xdbEA50B8536532BFAC245c89A2D574F333119Eb6",
                 abi: abi_Presale_BNB$1,
                 functionName: "buyWithNativeToken",
                 args: [bt],
@@ -76259,519 +76293,568 @@ const abi_USDT = [{
     stateMutability: "nonpayable",
     type: "function"
 }]
-  , abi_Presale_BNB = [{
-    inputs: [{
-        internalType: "address",
-        name: "_usdtTokenAddress",
-        type: "address"
-    }, {
-        internalType: "address",
-        name: "_ethPriceFeedAddress",
-        type: "address"
-    }],
-    stateMutability: "nonpayable",
-    type: "constructor"
-}, {
-    inputs: [{
-        internalType: "address",
-        name: "owner",
-        type: "address"
-    }],
-    name: "OwnableInvalidOwner",
-    type: "error"
-}, {
-    inputs: [{
-        internalType: "address",
-        name: "account",
-        type: "address"
-    }],
-    name: "OwnableUnauthorizedAccount",
-    type: "error"
-}, {
-    anonymous: !1,
-    inputs: [{
-        indexed: !0,
-        internalType: "address",
-        name: "previousOwner",
-        type: "address"
-    }, {
-        indexed: !0,
-        internalType: "address",
-        name: "newOwner",
-        type: "address"
-    }],
-    name: "OwnershipTransferred",
-    type: "event"
-}, {
-    anonymous: !1,
-    inputs: [{
-        indexed: !0,
-        internalType: "address",
-        name: "purchaser",
-        type: "address"
-    }, {
-        indexed: !1,
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256"
-    }, {
-        indexed: !1,
-        internalType: "bool",
-        name: "isUSDT",
-        type: "bool"
-    }, {
-        indexed: !1,
-        internalType: "enum CrossChainPresale.PresaleStage",
-        name: "stage",
-        type: "uint8"
-    }],
-    name: "PurchaseRecorded",
-    type: "event"
-}, {
-    anonymous: !1,
-    inputs: [{
-        indexed: !1,
-        internalType: "enum CrossChainPresale.PresaleStage",
-        name: "newStage",
-        type: "uint8"
-    }],
-    name: "StageAdvanced",
-    type: "event"
-}, {
-    anonymous: !1,
-    inputs: [{
-        indexed: !0,
-        internalType: "uint256",
-        name: "purchaseIndex",
-        type: "uint256"
-    }],
-    name: "TokensDistributed",
-    type: "event"
-}, {
-    inputs: [],
-    name: "advanceStageManually",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [],
-    name: "baseDecimals",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "address",
-        name: "referral",
-        type: "address"
-    }],
-    name: "buyWithNativeToken",
-    outputs: [],
-    stateMutability: "payable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "uint256",
-        name: "usdtAmount",
-        type: "uint256"
-    }, {
-        internalType: "address",
-        name: "referral",
-        type: "address"
-    }],
-    name: "buyWithUSDT",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [],
-    name: "currentStage",
-    outputs: [{
-        internalType: "enum CrossChainPresale.PresaleStage",
-        name: "",
-        type: "uint8"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "uint256",
-        name: "purchaseIndex",
-        type: "uint256"
-    }],
-    name: "distributeTokens",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [],
-    name: "ethPriceFeed",
-    outputs: [{
-        internalType: "contract AggregatorV3Interface",
-        name: "",
-        type: "address"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "getLatestETHPrice",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "getPurchasesCount",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "listCompletedDistributions",
-    outputs: [{
-        components: [{
-            internalType: "address",
-            name: "purchaser",
-            type: "address"
-        }, {
-            internalType: "uint256",
-            name: "amount",
-            type: "uint256"
-        }, {
-            internalType: "bool",
-            name: "tokensDistributed",
-            type: "bool"
-        }, {
-            internalType: "enum CrossChainPresale.PresaleStage",
-            name: "stage",
-            type: "uint8"
-        }],
-        internalType: "struct CrossChainPresale.Purchase[]",
-        name: "",
-        type: "tuple[]"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "listPendingDistributions",
-    outputs: [{
-        components: [{
-            internalType: "address",
-            name: "purchaser",
-            type: "address"
-        }, {
-            internalType: "uint256",
-            name: "amount",
-            type: "uint256"
-        }, {
-            internalType: "bool",
-            name: "tokensDistributed",
-            type: "bool"
-        }, {
-            internalType: "enum CrossChainPresale.PresaleStage",
-            name: "stage",
-            type: "uint8"
-        }],
-        internalType: "struct CrossChainPresale.Purchase[]",
-        name: "",
-        type: "tuple[]"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "maxLimitETH",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "maxLimitUSD",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "minLimitETH",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "minLimitUSD",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "owner",
-    outputs: [{
-        internalType: "address",
-        name: "",
-        type: "address"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    name: "purchases",
-    outputs: [{
-        internalType: "address",
-        name: "purchaser",
-        type: "address"
-    }, {
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256"
-    }, {
-        internalType: "bool",
-        name: "tokensDistributed",
-        type: "bool"
-    }, {
-        internalType: "enum CrossChainPresale.PresaleStage",
-        name: "stage",
-        type: "uint8"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "referralPercentage",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "address",
-        name: "",
-        type: "address"
-    }],
-    name: "referralRewardsETH",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "address",
-        name: "",
-        type: "address"
-    }],
-    name: "referralRewardsUSDT",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "renounceOwnership",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "uint256",
-        name: "_baseDecimals",
-        type: "uint256"
-    }],
-    name: "setBaseDecimals",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "address payable[3]",
-        name: "_ethReceivers",
-        type: "address[3]"
-    }],
-    name: "setEthReceivers",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "uint256",
-        name: "_maxLimitETH",
-        type: "uint256"
-    }],
-    name: "setMaxLimitETH",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "uint256",
-        name: "_maxLimitUSD",
-        type: "uint256"
-    }],
-    name: "setMaxLimitUSD",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "uint256",
-        name: "_minLimitETH",
-        type: "uint256"
-    }],
-    name: "setMinLimitETH",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "uint256",
-        name: "_minLimitUSD",
-        type: "uint256"
-    }],
-    name: "setMinLimitUSD",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "uint256",
-        name: "_referralPercentage",
-        type: "uint256"
-    }],
-    name: "setReferralPercentage",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "address[3]",
-        name: "_usdtReceivers",
-        type: "address[3]"
-    }],
-    name: "setUsdtReceivers",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "enum CrossChainPresale.PresaleStage",
-        name: "",
-        type: "uint8"
-    }],
-    name: "stagePrices",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "address",
-        name: "",
-        type: "address"
-    }],
-    name: "totalReferrals",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "address",
-        name: "newOwner",
-        type: "address"
-    }],
-    name: "transferOwnership",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "address",
-        name: "_newEthPriceFeedAddress",
-        type: "address"
-    }],
-    name: "updateEthPriceFeedAddress",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [{
-        internalType: "address",
-        name: "_newUsdtTokenAddress",
-        type: "address"
-    }],
-    name: "updateUsdtTokenAddress",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [],
-    name: "usdtToken",
-    outputs: [{
-        internalType: "contract IERC20",
-        name: "",
-        type: "address"
-    }],
-    stateMutability: "view",
-    type: "function"
-}, {
-    inputs: [],
-    name: "withdrawETH",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    inputs: [],
-    name: "withdrawUSDT",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-}]
+  , abi_Presale_BNB = [
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_presaleTokenAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_usdtTokenAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_ethPriceFeedAddress",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "owner", "type": "address" }
+    ],
+    "name": "OwnableInvalidOwner",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "account", "type": "address" }
+    ],
+    "name": "OwnableUnauthorizedAccount",
+    "type": "error"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "Paused",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "enum BabyHalvingPresale.PresaleStage",
+        "name": "newStage",
+        "type": "uint8"
+      }
+    ],
+    "name": "PresaleAdvanced",
+    "type": "event"
+  },
+  { "anonymous": false, "inputs": [], "name": "PresaleEnded", "type": "event" },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "enum BabyHalvingPresale.PresaleStage",
+        "name": "newStage",
+        "type": "uint8"
+      }
+    ],
+    "name": "StageChanged",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "buyer",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "value",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "currency",
+        "type": "string"
+      }
+    ],
+    "name": "TokensPurchased",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "Unpaused",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "baseDecimals",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "referral", "type": "address" }
+    ],
+    "name": "buyWithETH",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "usdtAmount", "type": "uint256" },
+      { "internalType": "address", "name": "referral", "type": "address" }
+    ],
+    "name": "buyWithUSDT",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "currentStage",
+    "outputs": [
+      {
+        "internalType": "enum BabyHalvingPresale.PresaleStage",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address[]",
+        "name": "userAddresses",
+        "type": "address[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "tokenAmounts",
+        "type": "uint256[]"
+      }
+    ],
+    "name": "distributeTokens",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "ethPriceFeed",
+    "outputs": [
+      {
+        "internalType": "contract AggregatorV3Interface",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getLatestETHPrice",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "maxLimitETH",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "maxLimitUSD",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "minLimitETH",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "minLimitUSD",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "pausePresale",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "paused",
+    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "presaleToken",
+    "outputs": [
+      { "internalType": "contract IERC20", "name": "", "type": "address" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "referralPercentage",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "name": "referralRewardsETH",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "name": "referralRewardsUSDT",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "renounceOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address payable[3]",
+        "name": "_ethReceivers",
+        "type": "address[3]"
+      }
+    ],
+    "name": "setEthReceivers",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_maxLimitETH", "type": "uint256" }
+    ],
+    "name": "setMaxLimitETH",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_maxLimitUSD", "type": "uint256" }
+    ],
+    "name": "setMaxLimitUSD",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_minLimitETH", "type": "uint256" }
+    ],
+    "name": "setMinLimitETH",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_minLimitUSD", "type": "uint256" }
+    ],
+    "name": "setMinLimitUSD",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "enum BabyHalvingPresale.PresaleStage",
+        "name": "stage",
+        "type": "uint8"
+      }
+    ],
+    "name": "setPresaleStage",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_referralPercentage",
+        "type": "uint256"
+      }
+    ],
+    "name": "setReferralPercentage",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "enum BabyHalvingPresale.PresaleStage",
+        "name": "stage",
+        "type": "uint8"
+      },
+      { "internalType": "uint256", "name": "price", "type": "uint256" }
+    ],
+    "name": "setStagePrice",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "enum BabyHalvingPresale.PresaleStage",
+        "name": "stage",
+        "type": "uint8"
+      },
+      { "internalType": "uint256", "name": "supply", "type": "uint256" }
+    ],
+    "name": "setStageTokenSupply",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address[3]",
+        "name": "_usdtReceivers",
+        "type": "address[3]"
+      }
+    ],
+    "name": "setUsdtReceivers",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "enum BabyHalvingPresale.PresaleStage",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "name": "stagePrices",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "enum BabyHalvingPresale.PresaleStage",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "name": "stageTokenSupplies",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "enum BabyHalvingPresale.PresaleStage",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "name": "tokensSold",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "totalETHRaised",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "name": "totalReferrals",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "totalTokensSold",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "totalUSDRaised",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "newOwner", "type": "address" }
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "unpausePresale",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_newEthPriceFeedAddress",
+        "type": "address"
+      }
+    ],
+    "name": "updateEthPriceFeedAddress",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "val", "type": "uint256" }],
+    "name": "updateReferralPercentage",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_newUsdtTokenAddress",
+        "type": "address"
+      }
+    ],
+    "name": "updateUsdtTokenAddress",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "usdtToken",
+    "outputs": [
+      {
+        "internalType": "contract IERC20Extended",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "withdrawETH",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "withdrawUSDT",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]
   , PresaleUsdtForm = ()=>{
     var pr;
     const [_e,et] = reactExports.useState("")
@@ -76807,7 +76890,7 @@ const abi_USDT = [{
         Dt && (bt("Approve Success!", !0, dt, ft, _e, Number(formatEther(_t ?? -1n)).toString(), "usdt", "bnb"),
         kt(),
         At({
-            address: "0xcAE6EBAceF456e5A942afb40Fc99F2F38639eF01",
+            address: "0xdbEA50B8536532BFAC245c89A2D574F333119Eb6",
             abi: abi_Presale_BNB,
             functionName: "buyWithUSDT",
             args: [parseFloat(_e ?? 0).toFixed(0), ft]
@@ -77162,8 +77245,8 @@ const abi_USDT = [{
                 className: `tCurreny ${_e === "bnb" ? "active" : ""}`,
                 onClick: ()=>{
                     et("bnb"),
-                    tt !== 56 && rt({
-                        chainId: 56
+                    tt !== 97 && rt({
+                        chainId: 97
                     })
                 }
                 ,
@@ -77179,8 +77262,8 @@ const abi_USDT = [{
                 className: `tCurreny  ${_e === "usdt" ? "active" : ""}`,
                 onClick: ()=>{
                     et("usdt"),
-                    tt !== 56 && rt({
-                        chainId: 56
+                    tt !== 97 && rt({
+                        chainId: 97
                     })
                 }
                 ,
@@ -77277,7 +77360,7 @@ const PresaleWidget = ({setURModal: _e})=>{
                 className: "tokenHead",
                 children: "Presale Is Live"
             }), jsxRuntimeExports.jsx(Countdown$1, {
-                date: new Date(Date.UTC(2024, 1, 14, 17, 30, 0)),
+                date: new Date(Date.UTC(2024, 4, 6, 17, 30, 0)),
                 renderer: dt
             }), !ot && !lt && jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, {
                 children: [jsxRuntimeExports.jsxs("div", {
